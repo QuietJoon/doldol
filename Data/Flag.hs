@@ -1,7 +1,7 @@
 {-# LANGUAGE MagicHash, BangPatterns #-}
 {-# LANGUAGE CPP #-}
 
-module Data.FlagManager where
+module Data.Flag where
 
 
 import Data.Bits
@@ -72,6 +72,27 @@ showFlagBy (I# bitLen#) aFlag = showFlagSub (bitLen#-#1#)
       if testBit aFlag (I# idx#)
         then '1' : showFlagSub (idx#-#1#)
         else '0' : showFlagSub (idx#-#1#)
+
+readFlag :: String -> Flag
+readFlag aFlagString = readFlagSub aFlagString zeroBits
+readFlagSub [] acc = acc
+readFlagSub (x:xs) acc =
+  if x == '0'
+    then readFlagSub xs next
+    else readFlagSub xs (setBit next 0)
+  where
+    next = shiftL acc 1
+
+{- Old style
+readFlagX :: String -> Flag
+readFlagX aFlagString = readFlagSub aFlagString len# 0#
+  where
+    (I# len#) = length aFlagString
+    readFlagSub [] len# acc# = (I# acc#)
+-}
+
+readEnum :: (Enum a) => String -> [a]
+readEnum = decodeFlag . readFlag
 
 -- eq f1 f2 = xor f1 f2 == zeroBits
 include f1 f2 = ((complement f1) .&. (f1 .|. f2)) == zeroBits

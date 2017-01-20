@@ -1,5 +1,9 @@
 # Revision history for FlagManager
 
+## 0.1.2.0  -- 2017/01/21
+
+* Implement `readFlag` and `readEnum`.
+
 ## 0.1.1.0  -- 2017/01/21
 
 * Implement `showFlagFit` and `showFlagBy`.
