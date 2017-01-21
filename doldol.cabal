@@ -1,8 +1,8 @@
-name:                   FlagManager
-version:                0.1.2.0
+name:                   doldol
+version:                0.1.3.0
 -- synopsis:               
 -- description:            
-homepage:               dev.quietjoon.net/projects/FlagManager
+homepage:               dev.quietjoon.net/projects/doldol
 license:                BSD3
 license-file:           LICENSE
 author:                 YongJoon Joe

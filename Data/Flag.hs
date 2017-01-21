@@ -5,6 +5,7 @@ module Data.Flag where
 
 
 import Data.Bits
+import Data.Int
 -- import Data.Traversable
 
 #ifdef DEBUG
@@ -17,8 +18,8 @@ import GHC.Prim
 import Debug.Trace
 
 
-type Flag = Int
-bitLen = 64 -- Just for 64bit Int. Not so good code.
+type Flag = Int64
+bitLen = 64 -- Just for Int64. Not so good code.
 
 isFlaggable :: (Bounded a, Enum a) => a -> Bool
 isFlaggable x = fromEnum (maxBound `asTypeOf` x) < bitLen
@@ -55,7 +56,12 @@ showFlag aFlag = showFlagSub (bitLen#-#1#)
         else '0' : showFlagSub (idx#-#1#)
 
 showFlagFit :: (Bounded a, Enum a) => a -> Flag -> String
-showFlagFit a aFlag = showFlagSub bitLen#
+showFlagFit a aFlag =
+  #ifdef DEBUG
+    -- Assertion for `Flag` according to `a`. This is not needed for `showFlag`.
+  assert (isFlaggable a) $
+  #endif
+    showFlagSub bitLen#
   where
     !(I# bitLen#) = fromEnum (maxBound `asTypeOf` a)
     showFlagSub (-1#) = ""
@@ -65,7 +71,12 @@ showFlagFit a aFlag = showFlagSub bitLen#
         else '0' : showFlagSub (idx#-#1#)
 
 showFlagBy :: Int -> Flag -> String
-showFlagBy (I# bitLen#) aFlag = showFlagSub (bitLen#-#1#)
+showFlagBy l@(I# bitLen#) aFlag =
+  #ifdef DEBUG
+    -- Assertion for Flag. This is not needed for showFlag
+  assert (l <= bitLen && l > 0) $
+  #endif
+    showFlagSub (bitLen#-#1#)
   where
     showFlagSub (-1#) = ""
     showFlagSub  idx# =
@@ -94,6 +105,13 @@ readFlagX aFlagString = readFlagSub aFlagString len# 0#
 readEnum :: (Enum a) => String -> [a]
 readEnum = decodeFlag . readFlag
 
--- eq f1 f2 = xor f1 f2 == zeroBits
 include f1 f2 = ((complement f1) .&. (f1 .|. f2)) == zeroBits
 exclude f1 f2 = (f1 .&. f2) == zeroBits
+
+about :: (Flag -> Flag -> Bool) -> Flag -> Flag -> Flag -> Bool
+about f fb f1 f2 = f (fb .&. f1) (fb .&. f2)
+--eqAbout fb f1 f2 = (fb .&. f1) == (fb .&. f2)
+eqAbout = about (==)
+includeAbout = about include
+-- Should think that this really works!
+excludeAbout = about exclude

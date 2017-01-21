@@ -1,4 +1,9 @@
-# Revision history for FlagManager
+# Revision history for doldol
+
+## 0.1.3.0  -- 2017/01/21
+
+* Implement `eqAbout`, `includeAbout`, and `excludeAbout`.
+* Define `Flag` as `Int64`.
 
 ## 0.1.2.0  -- 2017/01/21
 
