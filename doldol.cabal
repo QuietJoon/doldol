@@ -2,13 +2,13 @@ name:                   doldol
 version:                0.1.3.0
 -- synopsis:               
 -- description:            
--- homepage:               http://dev.quietjoon.net/projects/doldol
-homepage:               http://dev.quietjoon.net
+homepage:               http://dev.quietjoon.net/projects/doldol.html
+bug-reports:            https://github.com/QuietJoon/doldol/issues
 license:                BSD3
 license-file:           LICENSE
 author:                 YongJoon Joe
 maintainer:             developer@quietjoon.net
--- copyright:              
+copyright:              2017 YongJoon Joe
 category:               Data
 build-type:             Simple
 extra-source-files:     ChangeLog.md README.md
@@ -22,3 +22,7 @@ library
                       , ghc-prim >=0.5
   -- hs-source-dirs:       
   default-language:     Haskell2010
+
+source-repository head
+  type:     git
+  location: https://github.com/QuietJoon/doldol.git
