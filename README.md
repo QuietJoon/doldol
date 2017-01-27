@@ -1,6 +1,7 @@
 DolDol
 ====
 
-DolDol is for storing/checking multiple flags with a value.
+DolDol packs multiple flaggable data in a `Flag` value,
+and checks its flags by cheap operators.
 
-At first, This handles Enum only.
+In the current version, DolDol will handle `Enum a` in a list only.
