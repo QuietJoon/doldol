@@ -1,5 +1,9 @@
 # Revision history for doldol
 
+## 0.1.4.0  -- 2017/01/27
+
+* Implement `Data.Flag.Phantom`.
+
 ## 0.1.3.2  -- 2017/01/27
 
 * Refactoring to implement `Data.Flag.Phantom`.
