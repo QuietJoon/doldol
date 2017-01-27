@@ -1,5 +1,10 @@
 # Revision history for doldol
 
+## 0.1.3.2  -- 2017/01/27
+
+* Refactoring to implement `Data.Flag.Phantom`.
+* Remove not-using dependency.
+
 ## 0.1.3.0  -- 2017/01/21
 
 * Implement `eqAbout`, `includeAbout`, and `excludeAbout`.
