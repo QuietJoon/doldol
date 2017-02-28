@@ -1,5 +1,9 @@
 # Revision history for doldol
 
+## 0.1.4.1  -- 2017/02/28
+
+* Add `NFData` class for `Data.Flag.Phantom`.
+
 ## 0.1.4.0  -- 2017/01/27
 
 * Implement `Data.Flag.Phantom`.

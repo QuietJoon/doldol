@@ -1,4 +1,4 @@
-{-# LANGUAGE RankNTypes #-}
+{-# LANGUAGE RankNTypes, GeneralizedNewtypeDeriving #-}
 
 module Data.Flag.Phantom (
     module Data.Flag.Phantom
@@ -9,8 +9,11 @@ module Data.Flag.Phantom (
 import Data.Flag.Internal
 import qualified Data.Flag.Simple as SF
 
+import GHC.Generics (Generic)
+import Control.DeepSeq
 
-newtype PhantomFlag t = PhFlag Flag deriving (Show, Eq)
+
+newtype PhantomFlag t = PhFlag Flag deriving (Show, Eq, Ord,NFData)
 
 getFlag (PhFlag f) = f
 
