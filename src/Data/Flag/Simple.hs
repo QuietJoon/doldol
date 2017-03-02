@@ -92,7 +92,8 @@ readFlagSub (x:xs) acc =
 readEnum :: (Enum a) => String -> [a]
 readEnum = decodeFlag . readFlag
 
-include f1 f2 = ((complement f1) .&. (f1 .|. f2)) == zeroBits
+-- This implementations implies that when f2 == zeroBits then the results of `include` is same as `exclude`
+include f1 f2 = (f1 .&. f2) == f2
 exclude f1 f2 = (f1 .&. f2) == zeroBits
 
 about :: (Flag -> Flag -> b) -> Flag -> Flag -> Flag -> b
@@ -104,5 +105,5 @@ includeAbout = about include
 excludeAbout = about exclude
 
 anyReq obj req = (req == zeroBits) || (obj .&. req) /= zeroBits
--- Same as `eqAbout req obj req`, but `eqAbout` has redundant step `req .&. req`.
-allReq obj req = (obj .&. req) == req
+-- Same as `eqAbout req obj req` or `include`, but `eqAbout` has redundant step `req .&. req`.
+-- allReq obj req = (obj .&. req) == req

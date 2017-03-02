@@ -1,10 +1,15 @@
 # Revision history for doldol
 
+## 0.2.0.0  -- 2017/0/0
+
+* Remove `allReq` becasue of `include`.
+* Change implementation of `include` as like as `allReq`.
+
 ## 0.1.5.0  -- 2017/03/02
 
 * Add `anyReq`, `allReq`.
 * Fix: Remove wrong indents before CPP.
-* Relax `base` dependency to 4.8
+* Relax `base` dependency to 4.8.
 
 ## 0.1.4.1  -- 2017/02/28
 
