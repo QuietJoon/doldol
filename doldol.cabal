@@ -1,5 +1,5 @@
 name:                   doldol
-version:                0.1.4.1
+version:                0.1.5.0
 synopsis:               Flag packer & handler for flaggable data
 homepage:               http://dev.quietjoon.net/projects/doldol.html
 bug-reports:            https://github.com/QuietJoon/doldol/issues
@@ -18,7 +18,7 @@ library
                       , Data.Flag.Internal
                       , Data.Flag.Phantom
                       , Data.Flag.Simple
-  build-depends:        base >=4.9
+  build-depends:        base >=4.8
                       , deepseq
   default-language:     Haskell2010
   hs-source-dirs:       src

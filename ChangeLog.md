@@ -1,5 +1,11 @@
 # Revision history for doldol
 
+## 0.1.5.0  -- 2017/03/02
+
+* Add `anyReq`, `allReq`.
+* Fix: Remove wrong indents before CPP.
+* Relax `base` dependency to 4.8
+
 ## 0.1.4.1  -- 2017/02/28
 
 * Add `NFData` class for `Data.Flag.Phantom`.

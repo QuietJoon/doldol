@@ -22,9 +22,9 @@ import GHC.Base
 encodeFlag :: (Bounded a, Enum a) => [a] -> Flag
 encodeFlag [] = zeroBits
 encodeFlag anEnumList =
-  #ifdef DEBUG
+#ifdef DEBUG
   assert (isFlaggable . head $ anEnumList) $
-  #endif
+#endif
     encodeFlagSub anEnumList zeroBits
   where
     encodeFlagSub [] b = b
@@ -52,10 +52,10 @@ showFlag aFlag = showFlagSub (bitLen#-#1#)
 
 showFlagFit :: (Bounded a, Enum a) => a -> Flag -> String
 showFlagFit a aFlag =
-  #ifdef DEBUG
+#ifdef DEBUG
     -- Assertion for `Flag` according to `a`. This is not needed for `showFlag`.
   assert (isFlaggable a) $
-  #endif
+#endif
     showFlagSub bitLen#
   where
     !(I# bitLen#) = fromEnum (maxBound `asTypeOf` a)
@@ -67,10 +67,10 @@ showFlagFit a aFlag =
 
 showFlagBy :: Int -> Flag -> String
 showFlagBy l@(I# bitLen#) aFlag =
-  #ifdef DEBUG
+#ifdef DEBUG
     -- Assertion for Flag. This is not needed for showFlag
   assert (l <= bitLen && l > 0) $
-  #endif
+#endif
     showFlagSub (bitLen#-#1#)
   where
     showFlagSub (-1#) = ""
@@ -102,3 +102,7 @@ eqAbout = about (==)
 includeAbout = about include
 -- Should be tested that this really works properly!
 excludeAbout = about exclude
+
+anyReq obj req = (req == zeroBits) || (obj .&. req) /= zeroBits
+-- Same as `eqAbout req obj req`, but `eqAbout` has redundant step `req .&. req`.
+allReq obj req = (obj .&. req) == req

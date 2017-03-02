@@ -51,3 +51,6 @@ eqAbout = about (==)
 includeAbout = about SF.include
 -- Should be tested that this really works properly!
 excludeAbout = about SF.exclude
+
+anyReq obj req = SF.anyReq (getFlag obj) (getFlag req)
+allReq obj req = SF.allReq (getFlag obj) (getFlag req)
