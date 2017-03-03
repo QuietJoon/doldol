@@ -21,6 +21,3 @@ prints = mapM_ print
 
 main = do
   prints $ c include
-  prints $ c allReq
-  print $ (c include == c allReq)
-  print $ (g include == g allReq)
