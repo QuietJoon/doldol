@@ -1,6 +1,10 @@
 # Revision history for doldol
 
-## 0.2.0.0  -- 2017/0/0
+## 0.3.0.0  -- 2017/03/03
+
+* Change type of `Flag` from `Int64` to `Word64` to use unsigned integer.
+
+## 0.2.0.0  -- 2017/03/02
 
 * Remove `allReq` becasue of `include`.
 * Change implementation of `include` as like as `allReq`.

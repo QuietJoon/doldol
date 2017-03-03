@@ -2,7 +2,7 @@ module Main where
 
 
 import Data.Flag
-import Data.Int
+import Data.Word
 import Test.TestEnv
 import Test.QuickCheck
 

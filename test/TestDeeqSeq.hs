@@ -3,7 +3,7 @@ module Main where
 
 import Data.Flag.Phantom
 import qualified Data.Flag.Simple as S
-import Data.Int
+import Data.Word
 import Test.TestEnv
 import Test.QuickCheck
 import Control.DeepSeq
