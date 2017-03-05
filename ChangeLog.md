@@ -1,5 +1,9 @@
 # Revision history for doldol
 
+## 0.3.0.1  -- 2017/03/05
+
+* Uses pattern matching for `Data.Flag.Phantom`.
+
 ## 0.3.0.0  -- 2017/03/03
 
 * Change type of `Flag` from `Int64` to `Word64` to use unsigned integer.

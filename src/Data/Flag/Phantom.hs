@@ -24,13 +24,13 @@ decodeFlag :: Enum a => PhantomFlag t -> [a]
 decodeFlag = SF.decodeFlag . getFlag
 
 showFlag :: PhantomFlag t -> String
-showFlag = SF.showFlag . getFlag
+showFlag (PhFlag f) = SF.showFlag f
 
 showFlagFit :: (Bounded a, Enum a) => a -> PhantomFlag t -> String
-showFlagFit a = SF.showFlagFit a . getFlag
+showFlagFit a (PhFlag f) = SF.showFlagFit a f
 
 showFlagBy :: Int -> PhantomFlag t -> String
-showFlagBy l = SF.showFlagBy l . getFlag
+showFlagBy l (PhFlag f) = SF.showFlagBy l f
 
 readFlag :: String -> PhantomFlag t
 readFlag = PhFlag . SF.readFlag
@@ -39,12 +39,12 @@ readEnum :: (Enum a) => String -> [a]
 readEnum = SF.readEnum
 
 include :: PhantomFlag t -> PhantomFlag t -> Bool
-include pf1 pf2 = SF.include (getFlag pf1) (getFlag pf2)
+include (PhFlag f1) (PhFlag f2) = SF.include f1 f2
 exclude :: PhantomFlag t -> PhantomFlag t -> Bool
-exclude pf1 pf2 = SF.exclude (getFlag pf1) (getFlag pf2)
+exclude (PhFlag f1) (PhFlag f2) = SF.exclude f1 f2
 
 about :: (Flag -> Flag -> b) -> PhantomFlag t -> PhantomFlag t -> PhantomFlag t -> b
-about f pfb pf1 pf2 = SF.about f (getFlag pfb) (getFlag pf1) (getFlag pf2)
+about f (PhFlag fb) (PhFlag f1) (PhFlag f2)  = SF.about f fb f1 f2
 
 eqAbout = about (==)
 
@@ -52,4 +52,4 @@ includeAbout = about SF.include
 -- Should be tested that this really works properly!
 excludeAbout = about SF.exclude
 
-anyReq obj req = SF.anyReq (getFlag obj) (getFlag req)
+anyReq (PhFlag obj) (PhFlag req) = SF.anyReq obj req

@@ -1,5 +1,5 @@
 name:                   doldol
-version:                0.3.0.0
+version:                0.3.0.1
 synopsis:               Flag packer & handler for flaggable data
 homepage:               http://dev.quietjoon.net/projects/doldol.html
 bug-reports:            https://github.com/QuietJoon/doldol/issues
