@@ -6,6 +6,10 @@ and checks its flags by cheap operators.
 
 In the current version, DolDol will handle `Enum a` in a list only.
 
+# The name
+
+`DolDol` comes from Korean word **돌돌** which is a mimetic presenting *roll up fabrics or something like flags*.
+
 # Difference
 
 ## EnumSet
