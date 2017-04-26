@@ -6,7 +6,7 @@ bug-reports:            https://github.com/QuietJoon/doldol/issues
 license:                BSD3
 license-file:           LICENSE
 author:                 YongJoon Joe
-maintainer:             developer@quietjoon.net
+maintainer:             developer+DolDol@quietjoon.net
 copyright:              2017 YongJoon Joe
 category:               Data
 build-type:             Simple
