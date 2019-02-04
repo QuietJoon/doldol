@@ -2,6 +2,14 @@
 
 ## [Unreleased]
 
+### Related with `Traversable`
+* Handles `Enum` in `Traversable`.
+* Handle `a` in `Traversable`.
+
+### Test code
+* Not automated yet.
+  * Need to use test-framework.
+
 ## [0.3.0.1] - 2017-03-05
 
 ### Improved
