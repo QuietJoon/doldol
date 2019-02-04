@@ -1,10 +1,16 @@
 module Main where
 
 
+import Test.TestEnv
+import qualified Test.Framework as Test
+import qualified Test.Framework.Providers.HUnit as Test
+import qualified Test.Framework.Providers.QuickCheck2 as Test
+import Test.HUnit
+import Test.QuickCheck
+
 import Data.Flag
 import Data.Word
-import Test.TestEnv
-import Test.QuickCheck
+
 
 quicks = do
   -- Should not fail at test but assertion with `X`, should not fail with `Y`

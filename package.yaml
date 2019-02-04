@@ -1,0 +1,40 @@
+name:                doldol
+version:             0.3.0.1
+homepage:            http://dev.quietjoon.net/projects/doldol.html
+github:              "QuietJoon/doldol"
+license:             BSD3
+category:            Data
+author:              "YongJoon Joe"
+maintainer:          "developer+doldol@quietjoon.net"
+copyright:           2017-2019 YongJoon Joe
+
+extra-source-files:
+- README.md
+- ChangeLog.md
+
+synopsis:            Flag packer & handler for flaggable data
+description:         Please see the README on GitHub at <https://github.com/QuietJoon/doldol#readme>
+
+dependencies:
+- base >= 4.7
+- deepseq
+
+library:
+  source-dirs: src
+  other-modules: []
+
+tests:
+  doldol-test:
+    main:                Test.hs
+    source-dirs:         test
+    ghc-options:
+    - -threaded
+    - -rtsopts
+    - -with-rtsopts=-N
+    dependencies:
+    - doldol
+    - HUnit
+    - QuickCheck
+    - test-framework
+    - test-framework-hunit
+    - test-framework-quickcheck2
