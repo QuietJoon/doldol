@@ -38,3 +38,4 @@ tests:
     - test-framework
     - test-framework-hunit
     - test-framework-quickcheck2
+    - test-framework-th

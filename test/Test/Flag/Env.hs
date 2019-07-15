@@ -1,4 +1,4 @@
-module Test.TestEnv where
+module Test.Flag.Env where
 
 
 data A = A | B | C deriving (Show,Enum,Bounded)

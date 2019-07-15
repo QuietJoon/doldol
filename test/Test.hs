@@ -1,12 +1,13 @@
-module Main where
-
-
-import Test.TestEnv
 import qualified Test.Framework as Test
 import qualified Test.Framework.Providers.HUnit as Test
 import qualified Test.Framework.Providers.QuickCheck2 as Test
 import Test.HUnit
 import Test.QuickCheck
+
+import Test.Flag.Env
+import Test.Flag.DeepSeq
+import Test.Flag.Phantom
+import Test.Flag.Serial
 
 import Data.Flag
 import Data.Word
@@ -41,8 +42,13 @@ False
 
 main = do
   print $ showFlagBy 0 1
-  quicks
+  -- quicks
   print $ isFlaggable A
   print $ isFlaggable X0
   print $ isFlaggable Y1
   print $ encodeFlag [X0,X1]
+  Test.defaultMain
+    [ Test.Flag.DeepSeq.tests
+    , Test.Flag.Phantom.tests
+    , Test.Flag.Serial.tests
+    ]

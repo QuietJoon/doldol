@@ -1,10 +1,21 @@
-module Main where
+{-# LANGUAGE TemplateHaskell #-}
+
+module Test.Flag.Phantom where
 
 
 import Data.Flag.Phantom
 import Data.Word
-import Test.TestEnv
+
+import Test.Framework
+import Test.Framework.Providers.HUnit
+import Test.Framework.TH
+import Test.HUnit.Base
 import Test.QuickCheck
+
+import Test.Flag.Env
+
+
+tests = $(testGroupGenerator)
 
 quicks = do
   -- Should not fail at test but assertion with `X`, should not fail with `Y`
@@ -37,6 +48,7 @@ x2 = PhFlag 2 :: PhantomFlag X
 y1 = PhFlag 1 :: PhantomFlag Y
 y2 = PhFlag 2 :: PhantomFlag Y
 
+{-
 main = do
   print $ showFlagBy 0 (PhFlag 1)
   print $ showFlagBy 10 (PhFlag 1)
@@ -48,4 +60,4 @@ main = do
   print $ x1 == x2
   -- print $ x1 == y1
   -- print $ include x1 y1
-
+-}
