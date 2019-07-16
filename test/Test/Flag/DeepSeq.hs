@@ -3,8 +3,6 @@
 module Test.Flag.DeepSeq where
 
 
-import Control.DeepSeq
-
 import Data.Flag.Phantom
 import qualified Data.Flag.Simple as S
 import Data.Word
@@ -25,8 +23,6 @@ x2 = PhFlag 2 :: PhantomFlag X
 y1 = PhFlag 1 :: PhantomFlag Y
 y2 = PhFlag 2 :: PhantomFlag Y
 z1 = 12 :: S.Flag
-
--- print $ deepseq x1 $ deepseq x2 $ deepseq y1 $ deepseq y2 $ deepseq z1 $ y2
 
 test_showFlagBy =
   [ testCase "showFlagBy  0 x1 == \"\"" c_sFB01

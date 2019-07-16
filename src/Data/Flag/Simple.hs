@@ -7,9 +7,6 @@ module Data.Flag.Simple
   ) where
 
 
-import Data.Flag.Internal as Flag
-
-
 #ifdef DEBUG
 import Control.Exception
 #endif
@@ -17,6 +14,9 @@ import Control.Exception
 import Data.Bits
 
 import GHC.Base
+
+
+import Data.Flag.Internal as Flag
 
 
 encodeFlag :: (Foldable f, Bounded e, Enum e) => f e -> Flag

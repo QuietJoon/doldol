@@ -1,8 +1,6 @@
 module Test.Visualize where
 
 
-import Control.DeepSeq
-
 import Data.Flag
 import Data.Word
 

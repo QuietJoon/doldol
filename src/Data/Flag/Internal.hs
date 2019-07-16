@@ -2,9 +2,6 @@ module Data.Flag.Internal where
 
 
 import Data.Word
--- import Data.Traversable
-
-import GHC.Base
 
 
 type Flag = Word64
