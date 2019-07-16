@@ -19,14 +19,10 @@ import Data.Bits
 import GHC.Base
 
 
-encodeFlag :: (Bounded a, Enum a) => [a] -> Flag
-encodeFlag anEnumList =
-#ifdef DEBUG
-  assert (isFlaggable . head $ anEnumList) $
-#endif
-    Prelude.foldr (\x b -> setBit b (fromEnum x)) zeroBits anEnumList
+encodeFlag :: (Foldable f, Bounded e, Enum e) => f e -> Flag
+encodeFlag = Prelude.foldr (\x b -> setBit b (fromEnum x)) zeroBits
 
-decodeFlag :: Enum a => Flag -> [a]
+decodeFlag :: Enum e => Flag -> [e]
 decodeFlag aFlag = decodeFlagSub (bitLen# -# 1#)
   where
     !(I# bitLen#) = bitLen
@@ -46,7 +42,7 @@ showFlag aFlag = showFlagSub (bitLen#-#1#)
         then '1' : showFlagSub (idx#-#1#)
         else '0' : showFlagSub (idx#-#1#)
 
-showFlagFit :: (Bounded a, Enum a) => a -> Flag -> String
+showFlagFit :: (Bounded e, Enum e) => e -> Flag -> String
 showFlagFit a aFlag =
 #ifdef DEBUG
     -- Assertion for `Flag` according to `a`. This is not needed for `showFlag`.
@@ -85,7 +81,7 @@ readFlagSub (x:xs) acc =
   where
     next = shiftL acc 1
 
-readEnum :: (Enum a) => String -> [a]
+readEnum :: (Enum e) => String -> [e]
 readEnum = decodeFlag . readFlag
 
 -- This implementations implies that when f2 == zeroBits then the results of `include` is same as `exclude`
