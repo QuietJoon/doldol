@@ -20,15 +20,11 @@ import GHC.Base
 
 
 encodeFlag :: (Bounded a, Enum a) => [a] -> Flag
-encodeFlag [] = zeroBits
 encodeFlag anEnumList =
 #ifdef DEBUG
   assert (isFlaggable . head $ anEnumList) $
 #endif
-    encodeFlagSub anEnumList zeroBits
-  where
-    encodeFlagSub [] b = b
-    encodeFlagSub (x:xs) b = encodeFlagSub xs $ setBit b (fromEnum x)
+    Prelude.foldr (\x b -> setBit b (fromEnum x)) zeroBits anEnumList
 
 decodeFlag :: Enum a => Flag -> [a]
 decodeFlag aFlag = decodeFlagSub (bitLen# -# 1#)
