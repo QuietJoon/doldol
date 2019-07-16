@@ -35,7 +35,7 @@ p_ged02 i = (getFlag . encodeFlag . (decodeFlag :: PhantomFlag Y -> [Y]) . PhFla
 
 test_readShow =
   [ testProperty "(getFlag . readFlag . showFlag . PhFlag) i == i" p_rs01
-  , testProperty "(getFlag . readFlag . showFlagBy 16 . PhFlag) i == i" p_rs02
+  --, testProperty "(getFlag . readFlag . showFlagBy 16 . PhFlag) i == i" p_rs02
   , testProperty "(getFlag . readFlag . showFlagFit X0 . PhFlag) i == i" p_rs03
   , testProperty "(getFlag . readFlag . showFlagFit Y1 . PhFlag) i == i" p_rs04
   ]
