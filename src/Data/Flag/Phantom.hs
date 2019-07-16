@@ -17,16 +17,16 @@ newtype PhantomFlag t = PhFlag Flag deriving (Show, Eq, Ord,NFData)
 
 getFlag (PhFlag f) = f
 
-encodeFlag :: (Bounded a, Enum a) => [a] -> PhantomFlag t
+encodeFlag :: (Foldable f, Bounded e, Enum e) => f e -> PhantomFlag t
 encodeFlag = PhFlag . SF.encodeFlag
 
-decodeFlag :: Enum a => PhantomFlag t -> [a]
+decodeFlag :: Enum e => PhantomFlag t -> [e]
 decodeFlag = SF.decodeFlag . getFlag
 
 showFlag :: PhantomFlag t -> String
 showFlag (PhFlag f) = SF.showFlag f
 
-showFlagFit :: (Bounded a, Enum a) => a -> PhantomFlag t -> String
+showFlagFit :: (Bounded e, Enum e) => e -> PhantomFlag t -> String
 showFlagFit a (PhFlag f) = SF.showFlagFit a f
 
 showFlagBy :: Int -> PhantomFlag t -> String
@@ -35,7 +35,7 @@ showFlagBy l (PhFlag f) = SF.showFlagBy l f
 readFlag :: String -> PhantomFlag t
 readFlag = PhFlag . SF.readFlag
 
-readEnum :: (Enum a) => String -> [a]
+readEnum :: (Enum e) => String -> [e]
 readEnum = SF.readEnum
 
 include :: PhantomFlag t -> PhantomFlag t -> Bool
