@@ -24,29 +24,31 @@ y1 = PhFlag 1 :: PhantomFlag Y
 y2 = PhFlag 2 :: PhantomFlag Y
 
 test_encDec =
-  [ testProperty "(getFlag . encodeFlag . (decodeFlag :: PhantomFlag X -> [X]) . PhFlag) i == i" prop_ged01
-  , testProperty "(getFlag . encodeFlag . (decodeFlag :: PhantomFlag Y -> [Y]) . PhFlag) i == i" prop_ged02
+  [ testProperty "(getFlag . encodeFlag . (decodeFlag :: PhantomFlag X -> [X]) . PhFlag) i == i" p_ged01
+  , testProperty "(getFlag . encodeFlag . (decodeFlag :: PhantomFlag Y -> [Y]) . PhFlag) i == i" p_ged02
   ]
 
-prop_ged01 i = (getFlag . encodeFlag . (decodeFlag :: PhantomFlag X -> [X]) . PhFlag) i == i
+p_ged01 i = (getFlag . encodeFlag . (decodeFlag :: PhantomFlag X -> [X]) . PhFlag) i == i
   where types = (i :: Flag)
-prop_ged02 i = (getFlag . encodeFlag . (decodeFlag :: PhantomFlag Y -> [Y]) . PhFlag) i == i
+p_ged02 i = (getFlag . encodeFlag . (decodeFlag :: PhantomFlag Y -> [Y]) . PhFlag) i == i
   where types = (i :: Flag)
 
 test_readShow =
-  [ testProperty "(getFlag . readFlag . showFlag . PhFlag) i == i" prop_rs01
-  , testProperty "(getFlag . readFlag . showFlagBy 16 . PhFlag) i == i" prop_rs02
-  , testProperty "(getFlag . readFlag . showFlagFit X0 . PhFlag) i == i" prop_rs03
-  , testProperty "(getFlag . readFlag . showFlagFit Y1 . PhFlag) i == i" prop_rs04
+  [ testProperty "(getFlag . readFlag . showFlag . PhFlag) i == i" p_rs01
+  , testProperty "(getFlag . readFlag . showFlagBy 16 . PhFlag) i == i" p_rs02
+  , testProperty "(getFlag . readFlag . showFlagFit X0 . PhFlag) i == i" p_rs03
+  , testProperty "(getFlag . readFlag . showFlagFit Y1 . PhFlag) i == i" p_rs04
   ]
 
-prop_rs01 i = (getFlag . readFlag . showFlag . PhFlag) i == i
+p_rs01 i = (getFlag . readFlag . showFlag . PhFlag) i == i
   where types = (i :: Flag)
-prop_rs02 i = (getFlag . readFlag . showFlagBy 16 . PhFlag) i == i
+-- NOTE: This test should fail because input is not limited by -2^15~2^15-1
+p_rs02 i = (getFlag . readFlag . showFlagBy 16 . PhFlag) i == i
   where types = (i :: Flag)
-prop_rs03 i = (getFlag . readFlag . showFlagFit X0 . PhFlag) i == i
+-- NOTE: This should not fail at test but assertion because input is limited in Flag representation
+p_rs03 i = (getFlag . readFlag . showFlagFit X0 . PhFlag) i == i
   where types = (i :: Flag)
-prop_rs04 i = (getFlag . readFlag . showFlagFit Y1 . PhFlag) i == i
+p_rs04 i = (getFlag . readFlag . showFlagFit Y1 . PhFlag) i == i
   where types = (i :: Flag)
 
 test_showFlagBy =
