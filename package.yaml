@@ -25,7 +25,7 @@ library:
 
 tests:
   doldol-test:
-    main:                Test.hs
+    main:                Spec.hs
     source-dirs:         test
     ghc-options:
     - -threaded
