@@ -2,13 +2,13 @@
 
 ## [Unreleased]
 
-### Related with `Traversable`
-* Handles `Enum` in `Traversable`.
-* Handle `a` in `Traversable`.
+## [0.4.0.0] - 2019-07-16
 
-### Test code
-* Not automated yet.
-  * Need to use test-framework.
+### Changed
+* Change type of some types to handle `Foldable (Enum e)`
+
+### Improved
+* Automate test code with test-framework
 
 ## [0.3.0.1] - 2017-03-05
 
