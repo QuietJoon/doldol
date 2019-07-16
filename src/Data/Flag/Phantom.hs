@@ -9,11 +9,8 @@ module Data.Flag.Phantom (
 import Data.Flag.Internal
 import qualified Data.Flag.Simple as SF
 
-import GHC.Generics (Generic)
-import Control.DeepSeq
 
-
-newtype PhantomFlag t = PhFlag Flag deriving (Show, Eq, Ord,NFData)
+newtype PhantomFlag t = PhFlag Flag deriving (Show, Eq, Ord)
 
 getFlag (PhFlag f) = f
 
