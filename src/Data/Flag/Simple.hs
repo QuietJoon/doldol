@@ -18,10 +18,11 @@ import GHC.Base
 
 import Data.Flag.Internal as Flag
 
-
+-- | Encode `Flag` from a given collection of `Enum` e
 encodeFlag :: (Foldable f, Bounded e, Enum e) => f e -> Flag
 encodeFlag = Prelude.foldr (\x b -> setBit b (fromEnum x)) zeroBits
 
+-- | Decode `Flag` to a list of `Enum` e
 decodeFlag :: Enum e => Flag -> [e]
 decodeFlag aFlag = decodeFlagSub (bitLen# -# 1#)
   where
@@ -32,6 +33,7 @@ decodeFlag aFlag = decodeFlagSub (bitLen# -# 1#)
         then toEnum (I# idx#) : decodeFlagSub (idx# -# 1#)
         else                    decodeFlagSub (idx# -# 1#)
 
+-- | Show `Flag` as a binary digit `String`
 showFlag :: Flag -> String
 showFlag aFlag = showFlagSub (bitLen#-#1#)
   where
@@ -42,6 +44,7 @@ showFlag aFlag = showFlagSub (bitLen#-#1#)
         then '1' : showFlagSub (idx#-#1#)
         else '0' : showFlagSub (idx#-#1#)
 
+-- | Show `Flag` as a binary digit `String` with a minimum length
 showFlagFit :: (Bounded e, Enum e) => e -> Flag -> String
 showFlagFit a aFlag =
 #ifdef DEBUG
@@ -57,6 +60,7 @@ showFlagFit a aFlag =
         then '1' : showFlagSub (idx#-#1#)
         else '0' : showFlagSub (idx#-#1#)
 
+-- | Show `Flag` as a binary digit `String` with a given length
 showFlagBy :: Int -> Flag -> String
 showFlagBy l@(I# bitLen#) aFlag =
 #ifdef DEBUG
@@ -71,6 +75,7 @@ showFlagBy l@(I# bitLen#) aFlag =
         then '1' : showFlagSub (idx#-#1#)
         else '0' : showFlagSub (idx#-#1#)
 
+-- | Encode `Flag` from a given binary digit `String`
 readFlag :: String -> Flag
 readFlag aFlagString = readFlagSub aFlagString zeroBits
 readFlagSub [] acc = acc
@@ -81,21 +86,34 @@ readFlagSub (x:xs) acc =
   where
     next = shiftL acc 1
 
+-- | Encode `Enum` e from a given binary digit `String`
 readEnum :: (Enum e) => String -> [e]
 readEnum = decodeFlag . readFlag
 
--- This implementations implies that when f2 == zeroBits then the results of `include` is same as `exclude`
+-- | Check whether `Flag` f1 covers every positive bit in `Flag` f2
+--
+--   This implementations implies that when f2 == `zeroBits` then the results of `include` is same as `exclude`
+include :: Flag -> Flag -> Bool
 include f1 f2 = (f1 .&. f2) == f2
+-- | Check whether `Flag` f1 does not cover any positive bit in `Flag` f2
+exclude :: Flag -> Flag -> Bool
 exclude f1 f2 = (f1 .&. f2) == zeroBits
 
+-- | Apply f with two latter `Flag` arguments under the first `Flag`
 about :: (Flag -> Flag -> b) -> Flag -> Flag -> Flag -> b
 about f fb f1 f2 = f (fb .&. f1) (fb .&. f2)
---eqAbout fb f1 f2 = (fb .&. f1) == (fb .&. f2)
+
+-- | Check whether two `Flag`s are same or not under the first `Flag`
+--
+--   `eqAbout` fb f1 f2 = (fb .&. f1) == (fb .&. f2)
+eqAbout :: Flag -> Flag -> Flag -> Bool
 eqAbout = about (==)
+
 includeAbout = about include
 -- Should be tested that this really works properly!
 excludeAbout = about exclude
 
+-- | Same as `eqAbout req obj req` or `include`, but `eqAbout` has redundant step `req .&. req`.
+anyReq :: Flag -> Flag -> Bool
 anyReq obj req = (req == zeroBits) || (obj .&. req) /= zeroBits
--- Same as `eqAbout req obj req` or `include`, but `eqAbout` has redundant step `req .&. req`.
 -- allReq obj req = (obj .&. req) == req

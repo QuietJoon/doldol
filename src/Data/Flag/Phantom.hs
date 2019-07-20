@@ -12,6 +12,7 @@ import qualified Data.Flag.Simple as SF
 
 newtype PhantomFlag t = PhFlag Flag deriving (Show, Eq, Ord)
 
+-- | Take `Flag` from `PhantomFlag`
 getFlag (PhFlag f) = f
 
 encodeFlag :: (Foldable f, Bounded e, Enum e) => f e -> PhantomFlag t

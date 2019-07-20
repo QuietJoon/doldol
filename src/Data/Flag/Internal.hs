@@ -5,7 +5,9 @@ import Data.Word
 
 
 type Flag = Word64
-bitLen = 64 -- Just for Word64. Not so good code.
+-- | Hard coded just for `Word64`. Should be improved
+bitLen = 64
 
-isFlaggable :: (Bounded a, Enum a) => a -> Bool
+-- | Check `maxBound` of `Enum e` whether it have more than `bitLen` elements
+isFlaggable :: (Bounded e, Enum e) => e -> Bool
 isFlaggable x = fromEnum (maxBound `asTypeOf` x) < bitLen
