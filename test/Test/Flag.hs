@@ -33,7 +33,7 @@ c_sF05 = "0000000000000000000000000000000000000000000000000000000101001001" @=? 
 
 test_eqAbout =
   [ testCase "eqAbout 125 203 329 == True" c_eA01
-  , testCase "eqAbout  125 207 329 == False" c_eA02
+  , testCase "eqAbout 125 207 329 == False" c_eA02
   ]
 
 c_eA01 = assertBool "" (eqAbout 125 203 329)
