@@ -116,4 +116,7 @@ excludeAbout = about exclude
 -- | Same as `eqAbout req obj req` or `include`, but `eqAbout` has redundant step `req .&. req`.
 anyReq :: Flag -> Flag -> Bool
 anyReq obj req = (req == zeroBits) || (obj .&. req) /= zeroBits
--- allReq obj req = (obj .&. req) == req
+
+-- | Check every positive bit of req matches corresponding bit of obj
+allReq :: Flag -> Flag -> Bool
+allReq obj req = (obj .&. req) == req

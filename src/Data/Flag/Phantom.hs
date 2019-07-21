@@ -51,3 +51,5 @@ includeAbout = about SF.include
 excludeAbout = about SF.exclude
 
 anyReq (PhFlag obj) (PhFlag req) = SF.anyReq obj req
+
+allReq (PhFlag obj) (PhFlag req) = SF.allReq obj req
