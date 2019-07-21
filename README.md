@@ -1,21 +1,19 @@
-DolDol
+doldol
 ====
 
-DolDol packs multiple flaggable data in a `Flag` value,
+doldol packs multiple flaggable data in a `Flag` value,
 and checks its flags by cheap operators.
 
-In the current version, DolDol will handle `Enum a` in a list only.
+In the current version, doldol will handle `Enum a` in a list only.
 
 # The name
 
-`DolDol` comes from Korean word **돌돌** which is a mimetic presenting *roll up fabrics or something like flags*.
+`doldol` comes from Korean word **돌돌** which is a mimetic presenting *roll up fabrics or something like flags*.
 
-# Difference
+# Gap analysis
 
 ## EnumSet
 
 EnumSet is good library, but only works with List (ex. `toEnum`).
 I also need List interface only. However, next version of my simulation project needs to support `Traversal` class. Therefore, I keep to develop this.
 Of course, you can use EnumSet with `fromList` or etc., but when you consider performance seriously, let think one more time.
-
-
