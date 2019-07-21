@@ -1,4 +1,5 @@
-# Changelog for HistoryGrapher-Core
+Changelog for doldol
+====
 
 ## [Unreleased]
 
