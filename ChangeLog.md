@@ -2,6 +2,20 @@
 
 ## [Unreleased]
 
+## [0.4.1.0] - 2019-07-21
+
+### Added
+* Re-enable `allReq`
+
+### Changed
+* Remove unnecessary constraint `NFData`
+
+### Improved
+* Improve and fix test codes
+
+### Removed
+* Remove unnecessary ghc-option for parallelism
+
 ## [0.4.0.0] - 2019-07-16
 
 ### Changed
