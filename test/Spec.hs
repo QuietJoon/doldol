@@ -6,7 +6,6 @@ import Test.QuickCheck
 
 import Test.Flag
 import Test.Flag.Env
-import Test.Flag.DeepSeq
 import Test.Flag.Phantom
 
 import Data.Flag
@@ -16,6 +15,5 @@ import Data.Word
 main =
   Test.defaultMain
     [ Test.Flag.tests
-    , Test.Flag.DeepSeq.tests
     , Test.Flag.Phantom.tests
     ]
