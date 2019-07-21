@@ -16,7 +16,7 @@ synopsis:            Flag packer & handler for flaggable data
 description:         Please see the README on GitHub at <https://github.com/QuietJoon/doldol#readme>
 
 dependencies:
-- base >= 4.7
+- base >= 4.7 && < 5
 
 library:
   source-dirs: src
