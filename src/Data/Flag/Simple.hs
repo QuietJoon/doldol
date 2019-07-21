@@ -76,6 +76,8 @@ showFlagBy l@(I# bitLen#) aFlag =
         else '0' : showFlagSub (idx#-#1#)
 
 -- | Encode `Flag` from a given binary digit `String`
+--
+--   This allows any character which is not '0' or '1' as '1'
 readFlag :: String -> Flag
 readFlag aFlagString = readFlagSub aFlagString zeroBits
 readFlagSub [] acc = acc
@@ -113,7 +115,9 @@ includeAbout = about include
 -- Should be tested that this really works properly!
 excludeAbout = about exclude
 
--- | Same as `eqAbout req obj req` or `include`, but `eqAbout` has redundant step `req .&. req`.
+-- | Check any positive bit of req matches corresponding bit of obj
+--
+--   When req is `zerobits`, this returns `True`
 anyReq :: Flag -> Flag -> Bool
 anyReq obj req = (req == zeroBits) || (obj .&. req) /= zeroBits
 
