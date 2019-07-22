@@ -9,6 +9,8 @@ module Data.Flag.Phantom (
   ) where
 
 
+import Data.Foldable -- For base-4.7.0.*
+
 import Data.Flag.Internal
 import qualified Data.Flag.Simple as SF
 

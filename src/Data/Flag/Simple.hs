@@ -12,6 +12,7 @@ import Control.Exception
 #endif
 
 import Data.Bits
+import Data.Foldable -- For base-4.7.0.*
 
 import GHC.Base
 
