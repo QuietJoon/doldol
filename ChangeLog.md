@@ -3,6 +3,13 @@ Changelog for doldol
 
 ## [Unreleased]
 
+## [0.4.1.2] - 2019-07-22
+
+### Fixed
+* Satisfy code dependencies from `base-4.7.*` to current version
+  * `Data.Foldable`
+  * `Data.Bits`
+
 ## [0.4.1.0] - 2019-07-21
 
 ### Added
@@ -38,7 +45,7 @@ Changelog for doldol
 ## [0.2.0.0] - 2017-03-02
 
 ### Removed
-* Remove `allReq` becasue of `include`.
+* Remove `allReq` because of `include`.
 
 ### Changed
 * Change implementation of `include` as like as `allReq`.
