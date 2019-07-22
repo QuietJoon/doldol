@@ -118,7 +118,7 @@ excludeAbout = about exclude
 
 -- | Check any positive bit of req matches corresponding bit of obj
 --
---   When req is `zerobits`, this returns `True`
+--   When req is `zeroBits`, this returns `True`
 anyReq :: Flag -> Flag -> Bool
 anyReq obj req = (req == zeroBits) || (obj .&. req) /= zeroBits
 

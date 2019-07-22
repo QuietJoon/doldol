@@ -1,4 +1,4 @@
--- | `Data.Flag.Phantom` is for strict typing of Flag.
+-- | `Data.Flag.Phantom` module is for strict typing of Flag.
 --
 --   When you want to distinguish two Flag by its origination, use this module instead of `Data.Flag`(`Data.Flag.Simple`).
 module Data.Flag.Phantom (
