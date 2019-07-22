@@ -21,7 +21,7 @@ import Data.Flag.Internal as Flag
 
 -- | Encode `Flag` from a given collection of `Enum` e
 encodeFlag :: (Foldable f, Bounded e, Enum e) => f e -> Flag
-encodeFlag = Prelude.foldr (\x b -> setBit b (fromEnum x)) zeroBits
+encodeFlag = Data.Foldable.foldr' (\x b -> setBit b (fromEnum x)) zeroBits
 
 -- | Decode `Flag` to a list of `Enum` e
 decodeFlag :: Enum e => Flag -> [e]
