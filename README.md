@@ -4,7 +4,7 @@ doldol
 doldol packs multiple flaggable data in a `Flag` value,
 and checks its flags by cheap operators.
 
-In the current version, doldol will handle `Enum e` in a list only.
+In the current version, doldol will handle `Enum e` in a `Foldable` or `List` only.
 
 # The name
 
