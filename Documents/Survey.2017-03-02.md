@@ -6,7 +6,7 @@ Surveys on 2017/03/02
 After making a commit of 0.2.0.0, I started to survey similar libraries.
 There should be, and there are.
 
-# Sameple code of http://stackoverflow.com/questions/15910363/represent-a-list-of-enums-bitwise-as-an-int
+# Sample code of http://stackoverflow.com/questions/15910363/represent-a-list-of-enums-bitwise-as-an-int
 
 This gives very good monadic implementation example.
 This implementation is related the main issue which I want to solve (Handles `Enum` in `Traversable`) more generally.
@@ -23,7 +23,7 @@ Also, it requires `index` as default, which `doldol` requires it only for `Data.
 
 This is better than my implement, but may hard to understand for beginner who wants to describe type signatures.
 
-Name confliction with Prelude is another problem. Of coures it can be solved by many ways like `qulified` and redefine.
+Name conflicting with Prelude is another problem. Of courses it can be solved by many ways like `qualified` and redefine.
 But why not avoid it?
 
 ## Who uses it?
