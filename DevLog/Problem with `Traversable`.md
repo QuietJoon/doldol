@@ -6,20 +6,24 @@ Problem with `Traversable`
 To implement `isFlaggable`, the type of data is needed.
 
 In previous implement, it is like as
+
 ````
 isFlaggable :: (Bounded a, Enum a) => a -> Bool
 isFlaggable x = fromEnum (maxBound `asTypeOf` x) < bitLen
 ````
+
 This implementation is depended on `GHC.Base`
 
-
 ## Implement without using `asTypeOf`
+
 However, by using type variable, I tried to implement like as
+
 ````
 isFlaggable _ = fromEnum (maxBound :: a) < bitLen :: (Bounded a, Enum a) => a -> Bool
 ````
 
 But I get error message like
+
 ````
     • Couldn't match expected type ‘a1 -> Bool’ with actual type ‘Bool’
     • Possible cause: ‘(<)’ is applied to too many arguments
@@ -35,6 +39,7 @@ But I get error message like
 This message is hard to understand for me.
 
 Not defining on ghci, I tried code on the file.
+
 ````
 typeVariable.hs:3:17: error:
     • Could not deduce (Enum a0) arising from a use of ‘fromEnum’
@@ -69,8 +74,8 @@ typeVariable.hs:3:27: error:
       In the expression: fromEnum (maxBound :: a) < bitLen
 Failed, modules loaded: none.
 ````
-This makes sense, but also cannot be understand for me.
 
+This makes sense, but also cannot be understand for me.
 
 # With using `asTypeOf`
 
@@ -79,4 +84,4 @@ The problem is that how to get a element of the `Traversable a`.
 To apply something to `asTypeOf`, The function should pick a element from the `Traversable a`.
 However, there are no good class method for `Traversable a` like `head`. Therefore, I stucked in the point.
 
-Morover, `head` is also very dangerous! There could be empty `Traversable a`. Therefore, the approach depends on type variable is better then this. Of course, there could be trick like using `fromEnum 0`
+Moreover, `head` is also very dangerous! There could be empty `Traversable a`. Therefore, the approach depends on type variable is better then this. Of course, there could be trick like using `fromEnum 0`

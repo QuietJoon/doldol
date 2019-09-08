@@ -1,6 +1,7 @@
 -- | `Data.Flag.Phantom` module is for strict typing of Flag.
 --
---   When you want to distinguish two Flag by its origination, use this module instead of `Data.Flag`(`Data.Flag.Simple`).
+--   When you want to distinguish two Flag by its origination or purpose,
+--   use this module instead of `Data.Flag`(`Data.Flag.Simple`).
 module Data.Flag.Phantom (
     module Data.Flag.Phantom
   , module Data.Flag.Internal
@@ -50,7 +51,7 @@ about f (PhFlag fb) (PhFlag f1) (PhFlag f2)  = SF.about f fb f1 f2
 eqAbout = about (==)
 
 includeAbout = about SF.include
--- Should be tested that this really works properly!
+-- TODO: Should be tested that this really works properly!
 excludeAbout = about SF.exclude
 
 anyReq (PhFlag obj) (PhFlag req) = SF.anyReq obj req

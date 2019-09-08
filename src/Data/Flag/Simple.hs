@@ -113,7 +113,7 @@ eqAbout :: Flag -> Flag -> Flag -> Bool
 eqAbout = about (==)
 
 includeAbout = about include
--- Should be tested that this really works properly!
+-- TODO: Should be tested that this really works properly!
 excludeAbout = about exclude
 
 -- | Check any positive bit of req matches corresponding bit of obj

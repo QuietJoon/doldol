@@ -11,8 +11,6 @@ Design `anyReq`, `allReq`
 
 anyReq f1 f2 = (f2 == zeroBits) || (f1 .&. f2) /= zeroBits
 
-
-
 -- all : (obj .&. req) == req -> eqAbout req obj req
 
 allReq f1 f2 = ()

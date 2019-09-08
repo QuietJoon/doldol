@@ -5,7 +5,8 @@ import Data.Word
 
 
 type Flag = Word64
--- | Hard coded just for `Word64`. Should be improved
+
+-- | Hard coded value which works only for `Word64`. Should be improved.
 bitLen = 64
 
 -- | Check `maxBound` of `Enum e` whether it have more than `bitLen` elements
