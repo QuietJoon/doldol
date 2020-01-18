@@ -3,6 +3,12 @@ Changelog for doldol
 
 ## Unreleased
 
+## 0.4.2.0 -- 2020-01-18
+
+### Changed
+* Add `NFData` class to `PhantomFlag`
+  * Add a new dependency `deepseq`
+
 ## 0.4.1.2 -- 2019-07-22
 
 ### Fixed

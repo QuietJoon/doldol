@@ -1,4 +1,6 @@
--- | `Data.Flag.Phantom` module is for strict typing of Flag.
+{-# LANGUAGE GeneralizedNewtypeDeriving #-}
+
+  -- | `Data.Flag.Phantom` module is for strict typing of Flag.
 --
 --   When you want to distinguish two Flag by its origination or purpose,
 --   use this module instead of `Data.Flag`(`Data.Flag.Simple`).
@@ -9,12 +11,13 @@ module Data.Flag.Phantom (
 
 
 import Data.Foldable -- For base-4.7.0.*
+import Control.DeepSeq
 
 import Data.Flag.Internal
 import qualified Data.Flag.Simple as SF
 
 
-newtype PhantomFlag t = PhFlag Flag deriving (Show, Eq, Ord)
+newtype PhantomFlag t = PhFlag Flag deriving (Show, Eq, Ord, NFData)
 
 -- | Take `Flag` from `PhantomFlag`
 getFlag (PhFlag f) = f

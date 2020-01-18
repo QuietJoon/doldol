@@ -1,5 +1,5 @@
 name:                doldol
-version:             0.4.1.2
+version:             0.4.2.0
 homepage:            http://dev.quietjoon.net/projects/doldol.html
 github:              "QuietJoon/doldol"
 license:             BSD3
@@ -17,6 +17,7 @@ description:         Please see the README on GitHub at <https://github.com/Quie
 
 dependencies:
 - base >= 4.7 && < 5
+- deepseq
 
 library:
   source-dirs: src
